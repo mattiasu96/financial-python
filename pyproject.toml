@@ -10,6 +10,7 @@ packages = [{include = "financial_python"}]
 python = "3.10.2"
 scipy = "^1.11.1"
 matplotlib = "^3.7.2"
+jupyter = "^1.0.0"
 
 
 [build-system]
