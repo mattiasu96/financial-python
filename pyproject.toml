@@ -1,18 +1,26 @@
-[tool.poetry]
+[project]
 name = "financial-python"
 version = "0.1.0"
-description = ""
-authors = ["mattiasu96 <mattia.surricchio@prima.it>"]
+description = "Add your description here"
 readme = "README.md"
-packages = [{include = "financial_python"}]
+authors = [
+    { name = "mattiasu96", email = "37300216+mattiasu96@users.noreply.github.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "numpy>=2.3.5",
+]
 
-[tool.poetry.dependencies]
-python = "3.10.2"
-scipy = "^1.11.1"
-matplotlib = "^3.7.2"
-jupyter = "^1.0.0"
-
+[project.scripts]
+financial-python = "financial_python:main"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.14.8",
+    "scalene>=1.5.55",
+]
