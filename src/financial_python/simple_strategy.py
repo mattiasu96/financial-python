@@ -1,7 +1,9 @@
 from typing import Sequence
 import numpy as np
+from numba import jit
 
-def moving_average(values: Sequence[float], window: int) -> np.ndarray:
+@jit(nopython=True)
+def moving_average(values: np.ndarray, window: int) -> np.ndarray:
     """
     Compute a simple moving average (SMA) of the input sequence.
 
@@ -16,10 +18,10 @@ def moving_average(values: Sequence[float], window: int) -> np.ndarray:
     # if window <= 0:
     #     raise ValueError("window must be a positive integer")
 
-    arr = np.asarray(values, dtype=float)
+    arr = values
     n = arr.size
     if n == 0:
-        return np.array([], dtype=float)
+        return np.empty(0, dtype=np.float64)
 
     # If window is 1 just return a copy
     if window == 1:
