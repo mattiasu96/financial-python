@@ -1,14 +1,23 @@
 import time
 
-from financial_python.portfolio_return_simulation.simulate_price_path import simulate_price_path, compute_daily_asset_returns, generate_random_weights
-from financial_python.portfolio_return_simulation.portfolio_return import portfolio_returns_loops, portfolio_returns_vectorized
-from financial_python.portfolio_return_simulation.portfolio_stats import portfolio_stats_loops, portfolio_stats_vectorized
+from financial_python.portfolio_return_simulation.simulate_price_path import (
+    simulate_price_path,
+    compute_daily_asset_returns,
+    generate_random_weights,
+)
+from financial_python.portfolio_return_simulation.portfolio_return import (
+    portfolio_returns_loops,
+    portfolio_returns_vectorized,
+)
+from financial_python.portfolio_return_simulation.portfolio_stats import (
+    portfolio_stats_loops,
+    portfolio_stats_vectorized,
+)
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
-
     times_portfolios_loops = []
     times_portfolios_vectorized = []
     times_stats_loops = []
@@ -54,10 +63,19 @@ if __name__ == "__main__":
     width = 0.2
 
     fig, ax = plt.subplots(figsize=(12, 6))
-    ax.bar(inds - 1.5*width, times_portfolios_loops, width, label="Portfolios (loops)")
-    ax.bar(inds - 0.5*width, times_portfolios_vectorized, width, label="Portfolios (vectorized)")
-    ax.bar(inds + 0.5*width, times_stats_loops, width, label="Stats (loops)")
-    ax.bar(inds + 1.5*width, times_stats_vectorized, width, label="Stats (vectorized)")
+    ax.bar(
+        inds - 1.5 * width, times_portfolios_loops, width, label="Portfolios (loops)"
+    )
+    ax.bar(
+        inds - 0.5 * width,
+        times_portfolios_vectorized,
+        width,
+        label="Portfolios (vectorized)",
+    )
+    ax.bar(inds + 0.5 * width, times_stats_loops, width, label="Stats (loops)")
+    ax.bar(
+        inds + 1.5 * width, times_stats_vectorized, width, label="Stats (vectorized)"
+    )
 
     # show fewer x-ticks for readability
     step = max(1, len(inds) // 10)
