@@ -18,3 +18,5 @@ if __name__ == "__main__":
     print(signals.head())
 
     plot_moving_average_crossover_strategy(data["AAPL"], signals, stock_name="AAPL")
+
+    
